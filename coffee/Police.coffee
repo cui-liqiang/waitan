@@ -1,9 +1,8 @@
 class Police
-	@speed = 100;#px/s
 	@img = "image/jingcha.jpg";
 	@width = 60;#px
 	@height = 100;#px
-	constructor:(@x, @y)->
+	constructor:(@x, @y, @speed)->
 		@state = new UpState()
 		@image = ImageManager.getImageByName("police");
 
@@ -13,7 +12,7 @@ class Police
 	withinBoundary:(newPosition)->
 		x = newPosition.x
 		y = newPosition.y
-		x > 0 && x < GlobalConfig.width - @width && y > 0 && y < GlobalConfig.height - @height
+		x > 0 && x < GlobalConfig.width - Police.width && y > 0 && y < GlobalConfig.height - Police.height
 
 	overlapWith:(hero)->
 		tolerant = GlobalConfig.collisionTolerant
@@ -22,7 +21,7 @@ class Police
 		|| @y + Police.height < hero.y + tolerant)
 
 	draw: (context, delta) ->
-		newPosition = @state.getNextPosition(@x, @y, Hero.speed * delta / 1000)
+		newPosition = @state.getNextPosition(@x, @y, @speed * delta / 1000)
 		if @withinBoundary(newPosition)
 			@x = newPosition.x
 			@y = newPosition.y
