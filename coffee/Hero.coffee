@@ -1,8 +1,10 @@
 class Hero
 	@speed:100 #px/s 
+	@width:60
+	@height:100
 
 	constructor: (@x, @y) ->
-		@factory = new FixSizeAnimiationFactory("hero", 60, 100)
+		@factory = new FixSizeAnimiationFactory("hero", Hero.width, Hero.height)
 		@up = @factory.createWithFrames(upFrames())
 		@left = @factory.createWithFrames(leftFrames())
 		@right = @factory.createWithFrames(rightFrames())

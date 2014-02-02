@@ -15,6 +15,12 @@ class Police
 		y = newPosition.y
 		x > 0 && x < GlobalConfig.width - @width && y > 0 && y < GlobalConfig.height - @height
 
+	overlapWith:(hero)->
+		tolerant = GlobalConfig.collisionTolerant
+		!(@x + tolerant > Hero.width + hero.x || @x + Police.width < hero.x + tolerant \
+		|| @y + tolerant > Hero.height + hero.y \
+		|| @y + Police.height < hero.y + tolerant)
+
 	draw: (context, delta) ->
 		newPosition = @state.getNextPosition(@x, @y, Hero.speed * delta / 1000)
 		if @withinBoundary(newPosition)
