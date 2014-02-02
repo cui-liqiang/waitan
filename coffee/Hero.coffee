@@ -1,5 +1,5 @@
 class Hero
-	@speed:100 #px/s 
+	@speed:150 #px/s 
 	@width:60
 	@height:100
 

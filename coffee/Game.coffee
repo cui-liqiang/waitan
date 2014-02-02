@@ -31,10 +31,24 @@ class Game
 				self.context.fillText("You are arrested!!!!", 400, 150)
 		setTimeout(fadeOut ,50)
 
+	checkWin:->
+		@hero.x + Hero.width + 10 > GlobalConfig.width
+
+	winScreen:->
+		@context.drawImage(ImageManager.getImageByName("win"), \
+			1300, 0, 1350, 666, 0, 0, GlobalConfig.width, GlobalConfig.height)
+		@context.font = 'italic 40pt Calibri'
+		@context.fillStyle = 'red';
+		@context.fillText("You reach the destination!!!!", 200, 150)
+		@context.fillText("Congradulations!!!!", 300, 250)
+
+
 	start:->
 		@render();
 		if @checkCollision()
 			@failScreen()
+		else if @checkWin()
+			@winScreen()
 		else
 			self = this
 			setTimeout(()->
