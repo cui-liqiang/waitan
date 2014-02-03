@@ -70,7 +70,7 @@
       this.context.font = 'italic 40pt Calibri';
       this.context.fillStyle = 'red';
       this.context.fillText("You reach the destination!!!!", 200, 150);
-      return this.context.fillText("Congradulations!!!!", 300, 250);
+      return this.context.fillText("Congratulations!!!!", 300, 250);
     };
 
     Game.prototype.start = function() {
