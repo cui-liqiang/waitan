@@ -40,7 +40,7 @@ class Game
 		@context.font = 'italic 40pt Calibri'
 		@context.fillStyle = 'red';
 		@context.fillText("You reach the destination!!!!", 200, 150)
-		@context.fillText("Congradulations!!!!", 300, 250)
+		@context.fillText("Congratulations!!!!", 300, 250)
 
 
 	start:->
